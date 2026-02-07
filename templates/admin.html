@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Админ-панель</title>
+</head>
+<body>
+  <div class="page admin-page">
+    <h1>Админ-панель</h1>
+    <a href="/logout" class="admin-logout">🚪 Выйти</a>
+
+    <div class="admin-filters">
+      <a href="/admin">Все</a>
+      <a href="/admin?status=Новый">Новые</a>
+      <a href="/admin?status=В обработке">В обработке</a>
+      <a href="/admin?status=Выполнен">Выполненные</a>
+
+      <span class="admin-separator"></span>
+
+      <a href="/admin/masters" class="masters-btn">👷 Мастера</a>
+    </div>
+
+    <div class="orders">
+      {% for o in orders %}
+        <div class="order-card status-{{ o.status|lower|replace(' ', '-') }}">
+          
+          <div class="order-info">
+            <b>#{{ o.id }} — {{ o.service }}</b><br>
+            {{ o.name }} — {{ o.phone }}<br>
+            📍 {{ o.address }}<br>
+            {% if o.comment %}💬 {{ o.comment }}<br>{% endif %}
+            <small>Статус: {{ o.status }}</small>
+          </div>
+
+          <div class="order-actions">
+            <a href="/update_status/{{ o.id }}/Новый">Новый</a>
+            <a href="/update_status/{{ o.id }}/В обработке">В обработке</a>
+            <a href="/update_status/{{ o.id }}/Выполнен">Выполнен</a>
+          </div>
+
+          <form action="/assign_master" method="post" class="assign-form">
+            <input type="hidden" name="order_id" value="{{ o.id }}">
+
+            <select name="master_id" required>
+              <option value="">Назначить мастера</option>
+              {% for m in masters %}
+                <option value="{{ m.id }}" {% if o.master_id == m.id %}selected{% endif %}>
+                  {{ m.name }} ({{ m.service }})
+                </option>
+              {% endfor %}
+            </select>
+
+            <button type="submit">Назначить</button>
+          </form>
+
+          {% if o.master_id %}
+            <div class="assigned-master">
+              👷 Назначен мастер:
+              {% for m in masters %}
+                {% if m.id == o.master_id %}
+                  <b>{{ m.name }}</b>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+        </div>
+      {% else %}
+        <p>Пока заказов нет.</p>
+      {% endfor %}
+    </div>
+
+    <a href="/" class="admin-link">← На сайт</a>
+  </div>
+
+  <audio id="notifySound">
+    <source src="/static/notify.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    let lastCount = 0;
+
+    async function checkNewOrders() {
+      try {
+        const response = await fetch('/orders_count');
+        const count = parseInt(await response.text());
+
+        if (lastCount && count > lastCount) {
+          document.getElementById('notifySound').play();
+        }
+
+        lastCount = count;
+      } catch (e) {
+        console.log("Ошибка проверки заказов");
+      }
+    }
+
+    checkNewOrders();
+    setInterval(checkNewOrders, 5000);
+  </script>
+
+</body>
+</html>

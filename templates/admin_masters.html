@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Мастера</title>
+</head>
+<body>
+  <div class="page admin-page">
+    <h1>Мастера</h1>
+
+    <div class="admin-filters">
+      <a href="/admin">← Заказы</a>
+    </div>
+
+    <div class="card">
+      <h2>Добавить мастера</h2>
+      <form action="/admin/masters/add" method="post" class="order-form">
+        <input type="text" name="name" placeholder="Имя мастера" required>
+        <input type="text" name="phone" placeholder="Телефон" required>
+        <input type="text" name="service" placeholder="Услуга" required>
+        <button type="submit">Добавить мастера</button>
+      </form>
+    </div>
+
+    <div class="orders">
+      {% for m in masters %}
+      <div class="order-card">
+        <div>
+          <b>#{{ m.id }} — {{ m.name }}</b><br>
+          📞 {{ m.phone }}<br>
+          🛠 {{ m.service }}
+        </div>
+        <div class="order-actions">
+          <a href="/admin/masters/delete/{{ m.id }}">Удалить</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

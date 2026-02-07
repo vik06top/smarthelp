@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Як ми працюємо</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🛠 Сервіс послуг</div>
+
+    <nav class="header-nav" id="mobileMenu">
+      <a href="/">Послуги</a>
+      <a href="/how-it-works">Як ми працюєм?</a>
+      <a href="/info">Важлива інформація</a>
+      <a href="/contacts" class="contact-btn">Зв'язатись з нами</a>
+    </nav>
+
+    <button class="menu-btn" id="menuToggle" aria-label="Меню">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+  </div>
+</header>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<main class="page how-page">
+
+  <div class="how-hero">
+    <div class="how-hero-overlay"></div>
+    <div class="how-hero-content">
+      <h1>Як ми працюємо</h1>
+      <p>Простий і зрозумілий процес — без сюрпризів і прихованих умов</p>
+    </div>
+  </div>
+
+  <div class="how-it-works-block">
+    <div class="how-step fade-up">
+      <div class="how-icon">📝</div>
+      <h3>Залишаєте заявку</h3>
+      <p>Заповнюєте форму на сайті</p>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="how-icon">📞</div>
+      <h3>Ми передзвонюємо</h3>
+      <p>Уточнюємо деталі</p>
+    </div>
+
+    <div class="how-step fade-up">
+      <div class="how-icon">🧰</div>
+      <h3>Приїжджає майстер</h3>
+      <p>Виконує роботу</p>
+    </div>
+  </div>
+
+  <div class="how-cta">
+    <h2>Готові замовити послугу?</h2>
+    <a href="/" class="cta-btn">Перейти до послуг</a>
+  </div>
+
+</main>
+
+<!-- ФУТЕР ВНЕ КОНТЕНТЕРА -->
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/static/logo.png" alt="SmartHelp">
+        <span>SmartHelp</span>
+      </div>
+      <p>Сервіс виклику майстрів: електрик, сантехнік, клінінг</p>
+    </div>
+
+    <div class="footer-contacts">
+      <div class="footer-item">
+        📞 <a href="tel:+380XXXXXXXXX">+38 (0__) ___ __ __</a>
+      </div>
+      <div class="footer-item">
+        💬 Telegram / Viber
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/privacy">Політика конфіденційності</a>
+      <a href="/how-it-works">Як ми працюємо?</a>
+      <a href="/contacts">Контакти</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 SmartHelp. Усі права захищені
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    items.forEach(item => observer.observe(item));
+  });
+
+
+  const btn = document.getElementById('menuToggle');
+const menu = document.getElementById('mobileMenu');
+
+btn.addEventListener('click', () => {
+  menu.classList.toggle('active');
+  btn.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>

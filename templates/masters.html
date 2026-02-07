@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Мастера</title>
+</head>
+<body>
+  <div class="page admin-page">
+    <h1>👷 Управление мастерами</h1>
+
+    <div class="admin-filters">
+      <a href="/admin">← Заказы</a>
+    </div>
+
+    <div class="masters-grid">
+      {% for m in masters %}
+        <div class="master-card">
+          <b>{{ m.name }}</b><br>
+          📞 {{ m.phone }}<br>
+          🛠 {{ m.service }}
+
+          <form action="/delete_master" method="post" style="margin-top:10px;">
+            <input type="hidden" name="master_id" value="{{ m.id }}">
+            <button type="submit" class="danger-btn">Удалить</button>
+          </form>
+        </div>
+      {% else %}
+        <p>Пока мастеров нет.</p>
+      {% endfor %}
+    </div>
+
+    <h2>➕ Добавить мастера</h2>
+
+    <form action="/add_master" method="post" class="master-form">
+      <input type="text" name="name" placeholder="Имя мастера" required>
+      <input type="text" name="phone" placeholder="Телефон" required>
+      <input type="text" name="service" placeholder="Услуга (Электрик, Сантехник и т.д.)" required>
+      <button type="submit">Добавить</button>
+    </form>
+  </div>
+</body>
+</html>
