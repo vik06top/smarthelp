@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Вход в админку</title>
+</head>
+<body>
+  <div class="page login-page">
+    <h1>🔐 Вход в админку</h1>
+
+    <form method="post" class="login-form">
+      <input type="text" name="login" placeholder="Логин" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+
+      <button type="submit">Войти</button>
+
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+    </form>
+  </div>
+</body>
+</html>

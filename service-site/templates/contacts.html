@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Связаться с нами</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">🛠 Сервіс послуг</div>
+
+    <nav class="header-nav" id="mobileMenu">
+      <a href="/">Послуги</a>
+      <a href="/how-it-works">Як ми працюєм?</a>
+      <a href="/info">Важлива інформація</a>
+      <a href="/contacts" class="contact-btn">Зв'язатись з нами</a>
+    </nav>
+
+    <!-- КНОПКА-МЕНЮ С КАРТИНКОЙ -->
+    <button class="menu-btn" id="menuToggle" aria-label="Меню">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+  </div>
+</header>
+  <div class="contacts-page container">
+    <h1>Зв'язатися з нами</h1>
+    <p class="contacts-subtitle">
+      Ми завжди на зв'язку. Оберіть зручний спосіб
+    </p>
+
+    <div class="messengers">
+      <a href="https://t.me/your_username" target="_blank" class="messenger tg">
+        <img src="/static/telegram.png" alt="Telegram">
+        Telegram
+      </a>
+
+      <a href="https://wa.me/380XXXXXXXXX" target="_blank" class="messenger wa">
+        <img src="/static/whatsapp.png" alt="WhatsApp">
+        WhatsApp
+      </a>
+
+      <a href="viber://chat?number=+380XXXXXXXXX" class="messenger vb">
+        <img src="/static/viber.png" alt="Viber">
+        Viber
+      </a>
+    </div>
+
+    <div class="contact-info">
+      <p><strong>Телефон:</strong> +380 XX XXX XX XX</p>
+      <p><strong>Час роботи:</strong> 8:00 – 22:00 без вихідних</p>
+    </div>
+  </div>
+
+    </div>
+
+    <div class="about-us">
+      <h2>Про нас</h2>
+      <p>
+        Ми — сервіс побутових послуг. Клінінг, сантехніка та електрика.
+Працюємо швидко, чесно та з гарантією якості.
+      </p>
+    </div>
+  </div>
+<script>
+  const btn = document.getElementById('menuToggle');
+const menu = document.getElementById('mobileMenu');
+
+btn.addEventListener('click', () => {
+  menu.classList.toggle('active');
+  btn.classList.toggle('active');
+});
+</script>
+
+<!-- ФУТЕР ВНЕ КОНТЕНТЕРА -->
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/static/logo.png" alt="SmartHelp">
+        <span>SmartHelp</span>
+      </div>
+      <p>Сервіс виклику майстрів: електрик, сантехнік, клінінг</p>
+    </div>
+
+    <div class="footer-contacts">
+      <div class="footer-item">
+        📞 <a href="tel:+380XXXXXXXXX">+38 (0__) ___ __ __</a>
+      </div>
+      <div class="footer-item">
+        💬 Telegram / Viber
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/privacy">Політика конфіденційності</a>
+      <a href="/how-it-works">Як ми працюємо?</a>
+      <a href="/contacts">Контакти</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 SmartHelp. Усі права захищені
+  </div>
+</footer>
+
+</body>
+</html>
