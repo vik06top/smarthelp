@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>SmartHelp – Сервіс послуг</title>
+<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">
+  <img src="/static/img/favicon.png" alt="SmartHelp">
+  <span>SmartHelp - Сервіс послуг</span>
+</div>
+
+    <nav class="header-nav" id="mobileMenu">
+      <a href="/">Послуги</a>
+      <a href="/how-it-works">Як ми працюєм?</a>
+      <a href="/info">Важлива інформація</a>
+      <a href="/contacts" class="contact-btn">Зв'язатись з нами</a>
+    </nav>
+
+    <!-- КНОПКА-МЕНЮ С КАРТИНКОЙ -->
+    <button class="menu-btn" id="menuToggle" aria-label="Меню">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-text-bg">
+      <h1>Сервіс побутових послуг</h1>
+      <p>Клінінг, сантехніка та електрика — швидко, чесно, з гарантією якості</p>
+      <a href="#services" class="hero-btn">Вибрати послугу</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 id="services">Наші послуги</h2>
+
+  <div class="services circles">
+    <a class="service-circle" href="/service/Клининг">
+      <div class="circle-img">
+        <img src="/static/cleaning.png" alt="Клининг">
+      </div>
+      <span>Клінінг</span>
+    </a>
+
+    <a class="service-circle" href="/service/Сантехник">
+      <div class="circle-img">
+        <img src="/static/plumber.png" alt="Сантехник">
+      </div>
+      <span>Сантехнік</span>
+    </a>
+
+    <a class="service-circle" href="/service/Электрик">
+      <div class="circle-img">
+        <img src="/static/electric.png" alt="Электрик">
+      </div>
+      <span>Електрик</span>
+    </a>
+  </div>
+  <div class="features">
+      <div class="feature">
+        <h3>⏱ Швидко</h3>
+        <p>Виїзд майстра в день звернення</p>
+      </div>
+      <div class="feature">
+        <h3>🛡 Гарантія</h3>
+        <p>Гарантуємо якість виконаних робіт</p>
+      </div>
+      <div class="feature">
+        <h3>💬 Підтримка</h3>
+        <p>Завжди на зв'язку в месенджерах</p>
+      </div>
+    </div>
+  </div>
+<script>
+  const btn = document.getElementById('menuToggle');
+const menu = document.getElementById('mobileMenu');
+
+btn.addEventListener('click', () => {
+  menu.classList.toggle('active');
+  btn.classList.toggle('active');
+});
+</script>
+
+<!-- ФУТЕР ВНЕ КОНТЕНТЕРА -->
+<footer class="site-footer">
+  <div class="footer-content">
+
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="/static/logo.png" alt="SmartHelp">
+        <span>SmartHelp</span>
+      </div>
+      <p>Сервіс виклику майстрів: електрик, сантехнік, клінінг</p>
+    </div>
+
+    <div class="footer-contacts">
+      <div class="footer-item">
+        📞 <a href="tel:+380XXXXXXXXX">+38 (0__) ___ __ __</a>
+      </div>
+      <div class="footer-item">
+        💬 Telegram / Viber
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="/privacy">Політика конфіденційності</a>
+      <a href="/how-it-works">Як ми працюємо?</a>
+      <a href="/contacts">Контакти</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 SmartHelp. Усі права захищені
+  </div>
+</footer>
+</body>
+</html>
